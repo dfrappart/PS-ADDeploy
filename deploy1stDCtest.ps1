@@ -70,8 +70,8 @@ Param (
 	[STRING] $IPGW="192.168.10.2",
     [Parameter(Mandatory=$false)]
 	[STRING] $IPDNS="192.168.10.11",
-    [Parameter(Mandatory=$true)]
-	[SECURESTRING] $SafeADMPWD   
+    [Parameter(Mandatory=$true, Position=1)]
+	[SECURESTRING] $SafeADMPWD="hybr5DDw!"   
     )
     
 
@@ -288,7 +288,7 @@ function FormatDatadisk
 
         Import-Module ADDSDeployment -ea stop | Out-Null
         log "Installing AD Forest and 1st DC" green $dateexecution
-        #$ADPassword = ConvertTo-SecureString -String $SafeADMPWD
+        $ADPassword = ConvertTo-SecureString -String $SafeADMPWD -AsPlainText -Force
         Install-ADDSForest -CreateDnsDelegation:$False `
         -DatabasePath $ADDBPath `
         -DomainMode $DomainLevel `
@@ -299,7 +299,7 @@ function FormatDatadisk
         -LogPath $ADLogPath `
         -NoRebootOnCompletion:$False `
         -SysvolPath $SysvolPath `
-        -SafeModeAdministratorPassword $SafeADMPWD `
+        -SafeModeAdministratorPassword $ADPassword `
         -Force:$True -whatif -ea stop | Out-Null 
 
 }
