@@ -1,0 +1,1 @@
+#This rep contains my ps script for AD deployment. since i'm a lazy guy i tend to automate the stuff i do more than twice in my lab environment. However it is clearly not state of the art PS developpement
