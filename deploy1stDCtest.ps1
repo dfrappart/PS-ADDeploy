@@ -70,8 +70,8 @@ Param (
 	[STRING] $IPGW="192.168.10.2",
     [Parameter(Mandatory=$false)]
 	[STRING] $IPDNS="192.168.10.11",
-    [Parameter(Mandatory=$true, Position=1)]
-	[SECURESTRING] $SafeADMPWD="hybr5DDw!"   
+    [Parameter(Mandatory=$false)]
+	[STRING] $SafeADMPWD="P@ssword123!"   
     )
     
 
